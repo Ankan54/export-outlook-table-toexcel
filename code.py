@@ -10,7 +10,7 @@ import pandas as pd
 
 def main_function():
   
-    output_excel= "File path"  # replace with full file path with .xlsx extension
+    output_excel= "File path"  # replace with full file path having .xlsx extension
     try:
         outlook= win32.Dispatch("Outlook.Application").GetNamespace("MAPI")
     except:
