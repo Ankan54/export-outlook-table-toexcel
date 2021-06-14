@@ -22,7 +22,7 @@ def main_function():
 
     mail_body= pd.read_html(mail.HTMLBody) #create dataframe
 
-    column_header = mail_body.iloc[0]  # to make the first row of dataframe as header
+    column_header = mail_body[0].iloc[0]  # to make the first row of dataframe as header
     mail_body = mail_body[1:]
     mail_body.columns= column_header
     mail_body.to_excel(output_excel, index= False)
