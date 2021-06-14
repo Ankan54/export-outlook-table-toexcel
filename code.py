@@ -20,13 +20,14 @@ def main_function():
     mails = outlook.GetDefaultFolder(6).Items
     mail= mails.GetLast() # latest mail
 
-    mail_body= pd.read_html(mail.HTMLBody) #create dataframe
-
-    column_header = mail_body[0].iloc[0]  # to make the first row of dataframe as header
-    mail_body = mail_body[1:]
-    mail_body.columns= column_header
-    mail_body.to_excel(output_excel, index= False)
-    print('Done!')
+   mail_body= pd.read_html(mail.HTMLBody) #create dataframe
+    for i in range(len(mail_body)):
+        mail_body_df= mail_body[i]
+        header= mail_body_df.iloc[0]
+        mail_body_df= mail_body_df[1:]
+        mail_body_df.columns= header
+        mail_body_df.to_excel(output_excel, index= False)
+        print('Done!')
     return True
   
 main_function()
